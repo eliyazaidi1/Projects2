@@ -1,0 +1,50 @@
+import random
+
+def select_word():
+    categ ={'food': ['icecream', 'apple', 'candy', 'pasta', 'coffee'],
+        'colors': ['black', 'white', 'orange', 'brown', 'pink'],
+        'objects': ['mirror', 'table', 'clock', 'window', 'phone']}
+
+    choice = input('Select category (food/colors/objects):  ')
+    choice.lower()
+    if choice in categ:
+        return random.choice(categ[choice])
+    else:
+        print("Invalid category. Please choose from food, colors, or objects.")
+        return select_word()
+
+def show_word(word, gl):
+    d = ''
+    for i in word:
+      if (i in gl):
+        d += i
+      else:
+        d +='_'
+    return d
+
+def guess_word():
+    sw = select_word()
+    gl = []
+    ats = 0
+
+    print("Let's play Word Guessing Game! \n Start by guessing a letter ")
+
+    while('_' in show_word(sw,gl)):
+        print(f"\nCurrent word: {show_word(sw,gl)}")
+        guess = input("Enter a letter: ")
+        guess.lower()
+
+        if (guess.isalpha() and len(guess) == 1):
+            if(guess in gl):
+              print("You already guessed it before, TRY AGAIN")
+            elif(guess in sw):
+              print("Good guess")
+              gl.append(guess)
+            else:
+              print("Incorrect guess, TRY AGAIN")
+        else:
+            print("Invalid input, Please enter a letter.")
+        ats+=1
+    print(f"Thats correct! you guessed the word '{sw}' in {ats} attempts.")
+
+guess_word()
