@@ -1,0 +1,41 @@
+import random
+
+def rps_game():
+    l = ['rock','paper','scissors']
+    comp= random.choice(l)
+    # print(comp)
+    comp_score=0
+    player_score=0
+    for i in range(3):
+        a = input('Enter rock/paper/scissors:  ')
+        a.lower()
+        # if(comp==a):
+        #   print('Its a tie')
+        if((comp =='paper') and (a =='rock')):
+          comp_score=+1
+          print(f'Computer choice:{comp}')
+        elif((comp == 'rock') and (a == 'paper')):
+          player_score=+1
+          print(f'Computer choice:{comp}')
+        elif((comp == 'scissors') and (a == 'paper')):
+          comp_score=+1
+          print(f'Computer choice:{comp}')
+        elif((comp =='paper') and (a =='scissors')):
+          player_score=+1
+          print(f'Computer choice:{comp}')
+        elif((comp =='rock') and (a =='scissors')):
+          comp_score=+1
+          print(f'Computer choice:{comp}')
+        elif((comp == 'scissors') and (a == 'rock')):
+          player_score=+1
+          print(f'Computer choice:{comp}')
+
+    print(f'Final scores:    computer score = {comp_score} player score = {player_score}')
+    if(player_score>comp_score):
+        print('You win!')
+    elif(player_score<comp_score):
+        print('You loose.')
+    else:
+        print('Its a tie')
+
+rps_game()
