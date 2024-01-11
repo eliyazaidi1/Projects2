@@ -1,0 +1,22 @@
+
+import random
+
+def guessno_game():
+
+    print("Lets play number guessing game")
+    print("Lets start!")
+    print("Guess number between 1-50 ")
+    secretno = random.randint(1,50)
+    a=0
+    while (True):
+        guess = int(input("Your guess: "))
+        a+=1
+        if (guess==secretno):
+            print(f"Thats correct! You guessed the number in {a} attempts.")
+            break
+        elif (guess>secretno):
+            print("Its too high, please try again.")
+        else:
+            print("Its too low, please try again")
+
+guessno_game()
